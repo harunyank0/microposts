@@ -16,8 +16,14 @@
       
       <%= f.label :bio, "自己紹介" %>
       <%= f.text_area :bio %>
+      
+      <%= f.label :password, "パスワード" %>
+      <%= f.password_field :password %>
 
-      <%= f.submit "送信", class: "btn btn-large btn-warning" %>
+      <%= f.label :password_confirmation, "パスワード確認" %>
+      <%= f.password_field :password_confirmation %>
+
+      <%= f.submit "更新", class: "btn btn-large btn-warning" %>
     <% end %>
   </div>
 </div>

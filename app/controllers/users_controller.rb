@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  
+  before_action :confirm_login, only: [:show, :edit, :update]
  
   
   def show
@@ -35,6 +35,14 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def confirm_login
+    if  logged_in?
+    else
+      flash[:danger] = 'ログインしてください'
+      redirect_to root_path
+    end
+  end
 
   def user_params
     params.require(:user).permit(:name, :email, :address, :bio, :password, :password_confirmation)
