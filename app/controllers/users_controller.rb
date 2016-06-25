@@ -37,11 +37,8 @@ class UsersController < ApplicationController
   private
 
   def confirm_login
-    if  logged_in?
-    else
-      flash[:danger] = 'ログインしてください'
-      redirect_to root_path
-    end
+    @user = User.find(params[:id])
+    redirect_to root_path if @user != current_user
   end
 
   def user_params
